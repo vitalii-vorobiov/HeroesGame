@@ -16,14 +16,10 @@ public class CharacterFactory {
         hm.put(1, Elf.class);
         hm.put(2, King.class);
         hm.put(3, Knight.class);
-
     }
 
     @SneakyThrows
-    public Character createCharacter() throws IllegalAccessException, InstantiationException {
+    public Character createCharacter() {
         return hm.get(Config.generateRandom(0, hm.size() - 1)).getDeclaredConstructor().newInstance();
-//        return hm.get(Config.generateRandom(0, hm.size())).getDeclaredConstructor().newInstance();
-//        return hm.get(Config.generateRandom(0, hm.size() - 1)).getConstructor().newInstance();
-//        return hm.get(Config.generateRandom(0, hm.size() - 1)).newInstance();
     }
 }

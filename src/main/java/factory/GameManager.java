@@ -5,20 +5,30 @@ import character.Character;
 public class GameManager {
 
     public void fight(Character c1, Character c2) {
-        System.out.println("Fight between " + c1.getClass().getSimpleName() + " and " + c2.getClass().getSimpleName());
 
+        String c1Name = c1.getClass().getSimpleName();
+        String c2Name = c2.getClass().getSimpleName();
 
-        System.out.println(c1.getHp());
-        System.out.println(c2.getHp());
+        System.out.println(String.format("Fight between %s and %s\n", c1Name, c2Name));
 
-        c1.kick(c2);
-        c2.kick(c1);
+        while (c1.isAlive() && c2.isAlive()) {
+            if (c1Name.equals("Hobbit") && c2Name.equals("Hobbit")) {
+                System.out.println("Hobbits can't fight together");
+                break;
+            }
 
-        System.out.println(c1.getHp());
-        System.out.println(c2.getHp());
+            System.out.println(String.format("%s:\n" +
+                    "HP: %s\n" +
+                    "Power: %s\n", c1Name, c1.getHp(), c1.getPower()));
+            System.out.println(String.format("%s:\n" +
+                    "HP: %s\n" +
+                    "Power: %s\n", c2Name, c2.getHp(), c2.getPower()));
 
-        System.out.println(c1.isAlive());
-        System.out.println(c2.isAlive());
+            c1.kick(c2);
+            c2.kick(c1);
+        }
+
+        System.out.println(String.format("%s has wone!!!", c1.isAlive() ? c1Name : c2Name));
     }
 
 }

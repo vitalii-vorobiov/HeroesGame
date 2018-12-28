@@ -1,10 +1,10 @@
 package character;
 
-import behaviour.CryBehaviour;
+import behaviour.OrdinaryKick;
 
 public class Elf extends Character {
 
     public Elf() {
-        super(10, 10, new CryBehaviour());
+        super(10, 10, new OrdinaryKick());
     }
 }
